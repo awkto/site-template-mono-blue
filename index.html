@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BaseTen - Infrastructure Consulting</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f0f8ff;
+            color: #1e3a5f;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            background: linear-gradient(135deg, #0a4d8c 0%, #1e5f8f 100%);
+            color: #fff;
+            padding: 25px 0;
+            box-shadow: 0 2px 10px rgba(10,77,140,0.3);
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #e6f3ff;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+        nav a {
+            color: #b3d9ff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #fff;
+        }
+        .hero {
+            background: linear-gradient(180deg, #2563a8 0%, #1e5f8f 100%);
+            color: #fff;
+            padding: 100px 20px;
+            text-align: center;
+        }
+        .hero h2 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: #e6f3ff;
+        }
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 35px;
+            color: #b3d9ff;
+        }
+        .hero-button {
+            display: inline-block;
+            padding: 16px 40px;
+            background: #4a90d9;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(74,144,217,0.4);
+            transition: all 0.3s;
+        }
+        .hero-button:hover {
+            background: #5a9fe6;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(74,144,217,0.5);
+        }
+        .services {
+            padding: 80px 0;
+            background: #f0f8ff;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 50px;
+            color: #0a4d8c;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        .card {
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(30,94,143,0.15);
+            border-left: 5px solid #4a90d9;
+            transition: all 0.3s;
+        }
+        .card:hover {
+            box-shadow: 0 8px 25px rgba(30,94,143,0.25);
+            transform: translateY(-5px);
+            border-left-color: #2563a8;
+        }
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #4a90d9, #2563a8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(74,144,217,0.3);
+        }
+        .card h3 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #0a4d8c;
+        }
+        .card p {
+            color: #4a7ba7;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        .card ul {
+            list-style: none;
+        }
+        .card li {
+            color: #5a8cba;
+            padding: 10px 0;
+            padding-left: 25px;
+            position: relative;
+            border-bottom: 1px solid #e0f0ff;
+        }
+        .card li:last-child {
+            border-bottom: none;
+        }
+        .card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4a90d9;
+            font-weight: bold;
+        }
+        .features {
+            background: linear-gradient(135deg, #e0f0ff 0%, #cce6ff 100%);
+            padding: 80px 0;
+        }
+        .features h2 {
+            text-align: center;
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 50px;
+            color: #0a4d8c;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .feature-item {
+            background: rgba(255,255,255,0.7);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #b3d9ff;
+        }
+        .feature-item h3 {
+            font-size: 20px;
+            color: #2563a8;
+            margin-bottom: 10px;
+        }
+        .feature-item p {
+            color: #4a7ba7;
+        }
+        .cta {
+            background: linear-gradient(135deg, #0a4d8c 0%, #1e5f8f 100%);
+            color: #fff;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .cta h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: #e6f3ff;
+        }
+        .cta p {
+            font-size: 20px;
+            margin-bottom: 35px;
+            color: #b3d9ff;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 18px 45px;
+            background: #4a90d9;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(74,144,217,0.4);
+            transition: all 0.3s;
+            font-size: 18px;
+        }
+        .cta-button:hover {
+            background: #5a9fe6;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(74,144,217,0.5);
+        }
+        footer {
+            background: #0a3a6b;
+            color: #b3d9ff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        @media (max-width: 768px) {
+            .hero h2 { font-size: 40px; }
+            .services-grid { grid-template-columns: 1fr; }
+            nav ul { flex-direction: column; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>BaseTen</h1>
+                <nav>
+                    <ul>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Professional Infrastructure Consulting</h2>
+            <p>Trusted expertise in SDLC optimization, containerization, cloud migration, enterprise security, self-hosted solutions, and seamless system integration.</p>
+            <a href="#contact" class="hero-button">Get Started</a>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="card">
+                    <div class="card-icon">⚡</div>
+                    <h3>SDLC Optimization</h3>
+                    <p>Streamline your development lifecycle with proven automation and best practices.</p>
+                    <ul>
+                        <li>CI/CD Pipeline Implementation</li>
+                        <li>DevOps Integration</li>
+                        <li>Automated Testing Frameworks</li>
+                        <li>Release Management</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📦</div>
+                    <h3>Containerization</h3>
+                    <p>Modern application deployment with Docker and Kubernetes orchestration.</p>
+                    <ul>
+                        <li>Docker Configuration</li>
+                        <li>Kubernetes Cluster Management</li>
+                        <li>Container Registry Setup</li>
+                        <li>Microservices Architecture</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-icon">☁️</div>
+                    <h3>Cloud Migration</h3>
+                    <p>Seamless cloud transitions with minimal disruption and optimal performance.</p>
+                    <ul>
+                        <li>AWS / Azure / GCP Migration</li>
+                        <li>Hybrid Cloud Solutions</li>
+                        <li>Migration Strategy & Planning</li>
+                        <li>Cost Optimization</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🔒</div>
+                    <h3>Security Services</h3>
+                    <p>Enterprise-grade security implementation and compliance management.</p>
+                    <ul>
+                        <li>Security Audits & Assessment</li>
+                        <li>Penetration Testing</li>
+                        <li>Compliance (SOC2, ISO)</li>
+                        <li>Threat Detection & Response</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🖥️</div>
+                    <h3>Self-Hosted Solutions</h3>
+                    <p>On-premise infrastructure with complete control and data sovereignty.</p>
+                    <ul>
+                        <li>Private Cloud Infrastructure</li>
+                        <li>Server Configuration & Management</li>
+                        <li>Network Architecture Design</li>
+                        <li>Backup & Disaster Recovery</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🔄</div>
+                    <h3>System Integration</h3>
+                    <p>Connect platforms and automate workflows for maximum efficiency.</p>
+                    <ul>
+                        <li>API Development & Integration</li>
+                        <li>System Connectivity</li>
+                        <li>Workflow Automation</li>
+                        <li>Data Pipeline Construction</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Why Choose BaseTen</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h3>Expert Team</h3>
+                    <p>Certified professionals with years of experience</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Proven Results</h3>
+                    <p>Track record of successful implementations</p>
+                </div>
+                <div class="feature-item">
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock technical assistance</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Best Practices</h3>
+                    <p>Industry-leading methodologies</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="cta">
+        <div class="container">
+            <h2>Ready to Modernize?</h2>
+            <p>Let's discuss how we can transform your infrastructure</p>
+            <a href="mailto:hello@baseten.com" class="cta-button">Contact Us</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 BaseTen - Infrastructure Consulting - All Rights Reserved</p>
+        </div>
+    </footer>
+</body>
+</html>
